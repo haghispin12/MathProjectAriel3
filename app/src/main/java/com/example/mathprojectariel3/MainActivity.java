@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         allpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+              
             }
         });
         /**
