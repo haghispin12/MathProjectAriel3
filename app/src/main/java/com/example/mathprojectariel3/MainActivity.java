@@ -1,6 +1,8 @@
 package com.example.mathprojectariel3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,94 +20,95 @@ public class MainActivity extends AppCompatActivity {
     private TextView firstrandom;
     private TextView secondrandom;
     private EditText enteranswer;
-    private Button save;
-    private Button  allpar;
     private Button check;
-    private Exercise exercise;
-
-
-
+    private Button save;
+    private Button allpar;
+    private mainViewModel viewModelMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initview();
-         exercise=new Exercise();
+        viewModelMain=new ViewModelProvider(this).get(mainViewModel.class);
 
+        viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
+
+            @Override
+
+            public void onChanged(Integer num1) {
+                firstrandom.setText(num1+" ");
+            }
+
+        });
+        viewModelMain.Vnum2.observe(this, new Observer<Integer>() {
+
+            @Override
+
+            public void onChanged(Integer num1) {
+                secondrandom.setText(num1+" ");
+            }
+
+        });
     }
-    public void initview(){
-        etgar=findViewById(R.id.etgar);
-        ad20=findViewById(R.id.ad20);
-        loach=findViewById(R.id.loach);
-        firstrandom=findViewById(R.id.firstrandom);
-        secondrandom=findViewById(R.id.secondrandom);
-        enteranswer=findViewById(R.id.enteranswer);
-        save=findViewById(R.id.save);
-        allpar=findViewById(R.id.allpar);
-        check=findViewById(R.id.check);
 
+
+    public  void initview() {
+        etgar = findViewById(R.id.etgar);
+        ad20 = findViewById(R.id.ad20);
+        loach = findViewById(R.id.loach);
+        firstrandom = findViewById(R.id.firstrandom);
+        secondrandom = findViewById(R.id.secondrandom);
+        enteranswer = findViewById(R.id.enteranswer);
+        save = findViewById(R.id.save);
+        allpar = findViewById(R.id.allpar);
+        check=findViewById(R.id.check);
 
         etgar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-               exercise.generatenumsetgar();
-                updateview();
+            public void onClick(View v) {
+                viewModelMain.vChalenge();
 
             }
+
         });
         ad20.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-              exercise .generatenumsad20();
-                updateview();
+            public void onClick(View v) {
+                viewModelMain.Ad20();
+
             }
         });
         loach.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                exercise.generatenumsloach();
-                updateview();
-
-            }
-        });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                viewModelMain.loach();
 
             }
         });
         check.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                 if (exercise.test(enteranswer.getText().toString()))
-                Toast.makeText(MainActivity.this, "success", Toast.LENGTH_LONG).show();
-                 else
-                {
-                     Toast.makeText(MainActivity.this, "error", Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                if (viewModelMain.check(enteranswer.getText().toString()))
+                    Toast.makeText(MainActivity.this ,"Sucssesfull",Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(MainActivity.this ,"eror",Toast.LENGTH_LONG).show();
 
-                 }
             }
         });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         allpar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-              
+            public void onClick(View v) {
+
             }
         });
-        /**
-         * nums for etgar
-         */
 
-    }
-
-    /**
-     * showing nums in the game view
-     */
-    public void updateview (){
-       firstrandom.setText(exercise.getNum1()+"");
-       secondrandom.setText(exercise.getNum2()+"");
     }
 
 
@@ -113,3 +116,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+

@@ -7,10 +7,48 @@ public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
     Exercise exercise;
+    public mainViewModel(){
+        Vnum1=new MutableLiveData<>();
+        Vnum2=new MutableLiveData<>();
+        exercise=new Exercise();
+    }
 
 
-   // public mainViewModel() {
-     //   Vnum1 = new ;
- //   }
 
-}
+
+        public void vChalenge(){
+            exercise.generatenumsetgar();
+            Vnum1.setValue(exercise.getNum1());
+            Vnum2.setValue(exercise.getNum2());
+        }
+        public void Ad20(){
+            exercise.generatenumsad20();
+            Vnum1.setValue(exercise.getNum1());
+            Vnum2.setValue(exercise.getNum2());
+
+        }
+        public void loach(){
+            exercise.generatenumsloach();
+            Vnum1.setValue(exercise.getNum1());
+            Vnum2.setValue(exercise.getNum2());
+        }
+        public Boolean check(String str1){
+            return exercise.test(str1);
+        }
+
+        public MutableLiveData<Integer> getVnum1() {
+            return Vnum1;
+        }
+
+        public MutableLiveData<Integer> getVnum2() {
+            return Vnum2;
+        }
+
+        public void setVnum1(MutableLiveData<Integer> vnum1) {
+            Vnum1 = vnum1;
+        }
+
+        public void setVnum2(MutableLiveData<Integer> vnum2) {
+            Vnum2 = vnum2;
+        }
+    }
