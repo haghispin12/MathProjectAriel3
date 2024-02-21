@@ -17,8 +17,7 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initview();
-        intent= new Intent(this,MainActivity.class);
-        intent.putExtra("UserName",username.getText().toString());
+
 
 
 
@@ -30,6 +29,8 @@ public class loginActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent= new Intent(loginActivity.this,MainActivity.class);
+                intent.putExtra("UserName",username.getText().toString());
                 startActivity(intent);
             }
         });

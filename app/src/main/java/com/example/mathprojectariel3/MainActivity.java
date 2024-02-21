@@ -1,9 +1,14 @@
 package com.example.mathprojectariel3;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
     private Button save;
     private Button allpar;
     private mainViewModel viewModelMain;
+    private Button Grate;
+
+
+    ActivityResultLauncher<Intent> activityResultLauncher=registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+           new ActivityResultCallback<ActivityResult>() {
+            public  void onActivityResult(ActivityResult result) {
+                int myrate=result.getData().getIntExtra("Grate",-1);
+              //  Toast.makeText(MainActivity.this,myrate+ "",Toast.LENGTH_LONG).show();
+               }
+
+
+           });
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initview();
         viewModelMain=new ViewModelProvider(this).get(mainViewModel.class);
+        Intent intent=getIntent();
+        String username=intent.getStringExtra("UserName");
+        Toast.makeText(MainActivity.this,username,Toast.LENGTH_LONG).show();
 
         viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
 
@@ -63,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         save = findViewById(R.id.save);
         allpar = findViewById(R.id.allpar);
         check=findViewById(R.id.check);
+        Grate=findViewById(R.id.rate);
 
         etgar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,12 +132,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        Grate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(MainActivity.this,RateActivity2.class);
+               activityResultLauncher.launch(intent);
     }
 
 
 
 
 
-}
+
+});}}
+
 
