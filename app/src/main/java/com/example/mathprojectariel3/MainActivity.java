@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         new ActivityResultContracts.StartActivityForResult(),
            new ActivityResultCallback<ActivityResult>() {
             public  void onActivityResult(ActivityResult result) {
-                int myrate=result.getData().getIntExtra("Grate",-1);
-              //  Toast.makeText(MainActivity.this,myrate+ "",Toast.LENGTH_LONG).show();
+                int myrate=result.getData().getIntExtra("rate",-1);
+              Toast.makeText(MainActivity.this,myrate+ "",Toast.LENGTH_LONG).show();
                }
 
 
