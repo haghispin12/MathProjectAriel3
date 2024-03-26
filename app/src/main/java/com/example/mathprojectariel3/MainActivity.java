@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -54,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String username=intent.getStringExtra("UserName");
         Toast.makeText(MainActivity.this,username,Toast.LENGTH_LONG).show();
-
+        viewModelMain.VupdateName(username);
         viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
-
             @Override
 
             public void onChanged(Integer num1) {
@@ -129,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
         allpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                trans.add(R.id.Fshowallusers, new fragment_showusers());
+                trans.commit();
+
+
 
             }
         });

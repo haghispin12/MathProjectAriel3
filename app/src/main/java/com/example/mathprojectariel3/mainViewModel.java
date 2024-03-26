@@ -10,11 +10,21 @@ public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
     Exercise exercise;
+    User user;
     public mainViewModel(){
         Vnum1=new MutableLiveData<>();
         Vnum2=new MutableLiveData<>();
         exercise=new Exercise();
+        user= new User();
     }
+    public void VupdateName( String un){
+        user.setName(un);
+
+
+
+
+    }
+
 
 
 
