@@ -10,7 +10,7 @@ import android.widget.SeekBar;
 
 public class RateActivity2 extends AppCompatActivity {
     private Button save;
-    private SeekBar s1;
+    private SeekBar sb1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,12 @@ public class RateActivity2 extends AppCompatActivity {
 
     public void initview() {
         save = findViewById(R.id.save);
-        s1 = findViewById(R.id.s1);
+        sb1 = findViewById(R.id.s1);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent inn = new Intent();
-                inn.putExtra("rate", s1.getProgress());
+                inn.putExtra("rate", sb1.getProgress());
                 setResult(RESULT_OK, inn);
                 finish();
             }

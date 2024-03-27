@@ -23,6 +23,13 @@ public class mainViewModel extends ViewModel {
 
 
 
+
+    }
+    public String VgetName(String username){
+        return username;
+    }
+    public void VupdateRate(int rate){
+        user.setRate(rate);
     }
 
 

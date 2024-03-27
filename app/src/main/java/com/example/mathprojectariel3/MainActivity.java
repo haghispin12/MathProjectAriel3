@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
            new ActivityResultCallback<ActivityResult>() {
             public  void onActivityResult(ActivityResult result) {
                 int myrate=result.getData().getIntExtra("rate",-1);
+                viewModelMain.VupdateRate(myrate);
               Toast.makeText(MainActivity.this,myrate+ "",Toast.LENGTH_LONG).show();
                }
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         String username=intent.getStringExtra("UserName");
         Toast.makeText(MainActivity.this,username,Toast.LENGTH_LONG).show();
         viewModelMain.VupdateName(username);
+        viewModelMain.VgetName(username);
         viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
             @Override
 

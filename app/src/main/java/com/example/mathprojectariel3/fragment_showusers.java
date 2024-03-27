@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class fragment_showusers extends Fragment {
         mainViewModel mainViewModel;
+        private EditText user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,11 @@ public class fragment_showusers extends Fragment {
 
         initview(view);
        return view;
+
     }
 
     private void initview(View view) {
+        user=user.findViewById()
            //create all editext and id and conect mainviewmodel value
 
 
