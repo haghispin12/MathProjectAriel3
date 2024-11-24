@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initview();
-        viewModelMain=new ViewModelProvider(this).get(mainViewModel.class);
+
         Intent intent=getIntent();
         String username=intent.getStringExtra("UserName");
         Toast.makeText(MainActivity.this,username,Toast.LENGTH_LONG).show();
+        viewModelMain=new ViewModelProvider(this).get(mainViewModel.class);
         viewModelMain.VupdateName(username);
-        viewModelMain.VgetName(username);
         viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
             @Override
 

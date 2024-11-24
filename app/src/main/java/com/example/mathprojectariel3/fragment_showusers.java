@@ -33,7 +33,8 @@ public class fragment_showusers extends Fragment {
     }
 
     private void initview(View view) {
-        user=user.findViewById()
+        user=view.findViewById(R.id.user1);
+        user.setText(mainViewModel.VgetName());
            //create all editext and id and conect mainviewmodel value
 
 
