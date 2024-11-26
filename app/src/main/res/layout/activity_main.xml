@@ -108,7 +108,7 @@
         android:layout_gravity="center"
         android:text="שמירה "
         android:textSize="20dp"
-        android:backgroundTint="#F44336"/>
+        android:backgroundTint="#FF1100"/>
     <Button
         android:id="@+id/allpar"
         android:layout_width="match_parent"
