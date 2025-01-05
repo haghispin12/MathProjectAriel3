@@ -1,5 +1,6 @@
 package com.example.mathprojectariel3;
 
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,7 +16,7 @@ public class mainViewModel extends ViewModel {
         Vnum1=new MutableLiveData<>();
         Vnum2=new MutableLiveData<>();
         exercise=new Exercise();
-        user= new User();
+        user=new User();
     }
     public void VupdateName( String un){
         user.setName(un);
@@ -72,3 +73,8 @@ public class mainViewModel extends ViewModel {
             Vnum2 = vnum2;
         }
     }
+     public long  dbAddUser(Context context){
+      DBHelper dbHelper=new DBHelper(context);
+
+
+     }

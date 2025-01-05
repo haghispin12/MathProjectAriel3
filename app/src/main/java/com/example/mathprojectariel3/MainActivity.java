@@ -129,11 +129,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         allpar.setOnClickListener(new View.OnClickListener() {
-            @Override
+         @Override
             public void onClick(View v) {
-                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.add(R.id.Fshowallusers, new fragment_showusers());
-                trans.commit();
+                Intent intent=new Intent (MainActivity.this,ShowUsersActivity.class);
+                startActivity(intent);
+             //   FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+              //  trans.add(R.id.Fshowallusers, new fragment_showusers());
+             //   trans.commit();
 
 
 

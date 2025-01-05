@@ -52,6 +52,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
             }
          //   itemView.setOnClickListener(new View.OnClickListener() {
 
+
+
         });
     }
 }}

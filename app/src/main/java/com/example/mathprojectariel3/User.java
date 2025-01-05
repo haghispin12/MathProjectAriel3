@@ -1,22 +1,45 @@
 package com.example.mathprojectariel3;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 public class User {
     private String name;
     private int score;
     private  int rate;
     private int image;
-   public   User(String name,int image){
+    private Uri uri;
+    private long id;
+
+
+
+    public   User(String name, int image,Uri uri,long id ){
        this.image=image;
        this.name=name;
+       this.uri=uri;
+       this.id=id;
+
    }
 
 
 
+    public  User(){}
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public Uri getUri() {
+        return uri;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
+    }
 
     public int getImage() {
         return image;
