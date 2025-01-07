@@ -2,12 +2,13 @@ package com.example.mathprojectariel3;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class mainViewModel extends ViewModel {
+  public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
     Exercise exercise;
@@ -72,9 +73,11 @@ public class mainViewModel extends ViewModel {
         public void setVnum2(MutableLiveData<Integer> vnum2) {
             Vnum2 = vnum2;
         }
+      public long  dbAddUser(Context context){
+          DBHelper dbHelper=new DBHelper(context);
+          long id=dbHelper.insert(user,context);
+          Log.d("userId",id+"");
+          return id;
+
+      }
     }
-     public long  dbAddUser(Context context){
-      DBHelper dbHelper=new DBHelper(context);
-
-
-     }

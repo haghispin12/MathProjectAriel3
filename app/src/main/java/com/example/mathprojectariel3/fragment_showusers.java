@@ -23,12 +23,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class fragment_showusers extends Fragment {
         mainViewModel mainViewModel;
         private EditText user;
         private Button addpic;
+        private Button adduser;
         Uri uri;
         ImageView pic1;
         ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
@@ -68,6 +70,17 @@ public class fragment_showusers extends Fragment {
     private void initview(View view) {
         user=view.findViewById(R.id.user1);
         user.setText(mainViewModel.VgetName());
+        adduser=view.findViewById(R.id.adduser);
+
+       adduser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity()!=null){
+                    long id=mainViewModel. dbAddUser(getActivity());
+                    Toast.makeText(getActivity(),"insert row id"+id,Toast.LENGTH_LONG).show();
+                }
+            }
+        });
            //create all editext and id and conect mainviewmodel value
               addpic=view.findViewById(R.id.picture);
           addpic.setOnClickListener(new View.OnClickListener() {
