@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
   public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
+    int point;
     Exercise exercise;
     User user;
     public mainViewModel(){
@@ -27,10 +28,20 @@ import androidx.lifecycle.ViewModel;
 
 
     }
+
     public String VgetName(){
         return user.getName();
     }
-    public void VupdateRate(int rate){
+
+      public int vgetscore(){
+        return user.getScore();
+      }
+
+      public int vgetrate(){
+        return user.getRate();
+      }
+
+      public void VupdateRate(int rate){
         user.setRate(rate);
     }
 
@@ -42,18 +53,22 @@ import androidx.lifecycle.ViewModel;
             exercise.generatenumsetgar();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point = 20;
         }
         public void Ad20(){
             exercise.generatenumsad20();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point=15;
 
         }
         public void loach(){
             exercise.generatenumsloach();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point=10;
         }
+
         public Boolean check(String str1){
             return exercise.test(str1);
         }

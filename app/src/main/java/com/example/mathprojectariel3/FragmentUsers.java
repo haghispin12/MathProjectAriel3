@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultCaller;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
@@ -26,11 +25,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class fragment_showusers extends Fragment {
+public class FragmentUsers extends Fragment {
         mainViewModel mainViewModel;
         private EditText user;
         private Button addpic;
         private Button adduser;
+        private TextView rate23;
+        private TextView score;
+        private EditText etUsrename;
         Uri uri;
         ImageView pic1;
         ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
@@ -68,9 +70,13 @@ public class fragment_showusers extends Fragment {
 
 
     private void initview(View view) {
-        user=view.findViewById(R.id.user1);
-        user.setText(mainViewModel.VgetName());
+        etUsrename=view.findViewById(R.id.etUsrename);
+        etUsrename.setText(mainViewModel.VgetName());
         adduser=view.findViewById(R.id.adduser);
+        rate23=view.findViewById(R.id.rate23);
+        score=view.findViewById(R.id.score);
+        score.setText("score"+mainViewModel.vgetscore()+"");
+        rate23.setText("rate"+mainViewModel.vgetrate()+"");
 
        adduser.setOnClickListener(new View.OnClickListener() {
             @Override

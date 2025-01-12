@@ -13,11 +13,14 @@ public class User {
 
 
 
-    public   User(String name, int image,Uri uri,long id ){
+    public   User(String name, int image,Uri uri,long id,int rate,int score ){
        this.image=image;
        this.name=name;
        this.uri=uri;
        this.id=id;
+       this.rate = rate;
+       this.score=score;
+
 
    }
 
