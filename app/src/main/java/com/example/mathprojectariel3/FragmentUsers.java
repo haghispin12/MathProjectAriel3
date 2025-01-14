@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.provider.MediaStore;
@@ -24,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class FragmentUsers extends Fragment {
         mainViewModel mainViewModel;
@@ -35,6 +38,7 @@ public class FragmentUsers extends Fragment {
         private EditText etUsrename;
         Uri uri;
         ImageView pic1;
+
         ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -42,6 +46,7 @@ public class FragmentUsers extends Fragment {
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode()==RESULT_OK){
                          pic1.setImageURI(uri);
+                        mainViewModel.user.setUri(uri);
                         }
 
                     }
@@ -62,7 +67,13 @@ public class FragmentUsers extends Fragment {
         // Inflate the layout for this fragment
        View view=inflater.inflate(R.layout.fragment_showusers, container, false);
         mainViewModel=new ViewModelProvider(requireActivity()).get(mainViewModel.class);
+//        viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
+        mainViewModel.D1.observe(getActivity(), new Observer<ArrayList<User>>() {
+            @Override
+            public void onChanged(ArrayList<User> users) {
 
+            }
+        });
         initview(view);
        return view;
 
@@ -75,6 +86,7 @@ public class FragmentUsers extends Fragment {
         adduser=view.findViewById(R.id.adduser);
         rate23=view.findViewById(R.id.rate23);
         score=view.findViewById(R.id.score);
+        pic1=view.findViewById(R.id.ivProfileImage);
         score.setText("score"+mainViewModel.vgetscore()+"");
         rate23.setText("rate"+mainViewModel.vgetrate()+"");
 
@@ -102,6 +114,8 @@ public class FragmentUsers extends Fragment {
                             startCamera.launch(cameraIntent);
               }
           });
+
+
 
 
 

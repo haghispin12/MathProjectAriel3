@@ -8,9 +8,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-  public class mainViewModel extends ViewModel {
+import java.util.ArrayList;
+
+public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
+    MutableLiveData<ArrayList<User>> D1;
     int point;
     Exercise exercise;
     User user;
@@ -89,10 +92,15 @@ import androidx.lifecycle.ViewModel;
             Vnum2 = vnum2;
         }
       public long  dbAddUser(Context context){
-          DBHelper dbHelper=new DBHelper(context);
-          long id=dbHelper.insert(user,context);
+          DBHelper dbHelper1=new DBHelper(context);
+          long id=dbHelper1.insert(user,context);
           Log.d("userId",id+"");
           return id;
 
       }
+      public void  dbSelectAll(Context context){
+          DBHelper dbHelper2=new DBHelper(context);
+          ArrayList arr =dbHelper2.selectAll();
+         D1.setValue(arr);
+    }
     }

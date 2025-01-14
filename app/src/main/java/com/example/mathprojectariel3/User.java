@@ -10,9 +10,16 @@ public class User {
     private int image;
     private Uri uri;
     private long id;
+    private Bitmap bitmap;
 
 
+ public User( Long id, String name,int rate,Bitmap bitmap,int score){
+     this.id=id;
+     this.rate = rate;
+     this.score=score;
+     this.bitmap=bitmap;
 
+ }
     public   User(String name, int image,Uri uri,long id,int rate,int score ){
        this.image=image;
        this.name=name;
