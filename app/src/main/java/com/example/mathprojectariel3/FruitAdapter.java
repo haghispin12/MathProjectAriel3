@@ -36,8 +36,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         return fruits.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvFruitName;
-        ImageView ivFruitImg;
+        private TextView tvFruitName;
+        private ImageView ivFruitImg;
         public MyViewHolder(View itemView){
             super(itemView);
             tvFruitName=itemView.findViewById(R.id.tvFruitName);
