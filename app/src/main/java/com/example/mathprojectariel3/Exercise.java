@@ -45,6 +45,7 @@ public class Exercise {
    public boolean test (String enteranswer){
         String num3=num1*num2+"";
         if(enteranswer.equals(num3))
+
             return true;
         else
             return false;

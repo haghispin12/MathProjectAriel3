@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class MainActivity extends AppCompatActivity {
     private Button etgar;
     private Button ad20;
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         allpar = findViewById(R.id.allpar);
         check=findViewById(R.id.check);
         Grate=findViewById(R.id.rate);
-
         etgar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +112,11 @@ public class MainActivity extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewModelMain.check(enteranswer.getText().toString()))
-                    Toast.makeText(MainActivity.this ,"Sucssesfull",Toast.LENGTH_LONG).show();
-                else
+                if (viewModelMain.check(enteranswer.getText().toString())) {
+
+                    Toast.makeText(MainActivity.this, "Sucssesfull", Toast.LENGTH_LONG).show();
+                    viewModelMain.user.setScore(viewModelMain.point);
+                } else
                     Toast.makeText(MainActivity.this ,"eror",Toast.LENGTH_LONG).show();
 
             }
@@ -134,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent=new Intent (MainActivity.this,ShowUsersActivity.class);
 //                startActivity(intent);
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.add(R.id.Fshowallusers, new fragment_showusers());
+                trans.add(R.id.Fshowallusers, new FragmentUsers());
                 trans.commit();
 
 
@@ -146,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                Intent intent=new Intent(MainActivity.this,RateActivity2.class);
                activityResultLauncher.launch(intent);
+
     }
 
 

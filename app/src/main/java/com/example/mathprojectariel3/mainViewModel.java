@@ -8,9 +8,13 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-  public class mainViewModel extends ViewModel {
+import java.util.ArrayList;
+
+public class mainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
+    MutableLiveData<ArrayList<User>> D1;
+    int point;
     Exercise exercise;
     User user;
     public mainViewModel(){
@@ -27,10 +31,20 @@ import androidx.lifecycle.ViewModel;
 
 
     }
+
     public String VgetName(){
         return user.getName();
     }
-    public void VupdateRate(int rate){
+
+      public int vgetscore(){
+        return user.getScore();
+      }
+
+      public int vgetrate(){
+        return user.getRate();
+      }
+
+      public void VupdateRate(int rate){
         user.setRate(rate);
     }
 
@@ -42,18 +56,22 @@ import androidx.lifecycle.ViewModel;
             exercise.generatenumsetgar();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point = 20;
         }
         public void Ad20(){
             exercise.generatenumsad20();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point=15;
 
         }
         public void loach(){
             exercise.generatenumsloach();
             Vnum1.setValue(exercise.getNum1());
             Vnum2.setValue(exercise.getNum2());
+            point=10;
         }
+
         public Boolean check(String str1){
             return exercise.test(str1);
         }
@@ -74,10 +92,15 @@ import androidx.lifecycle.ViewModel;
             Vnum2 = vnum2;
         }
       public long  dbAddUser(Context context){
-          DBHelper dbHelper=new DBHelper(context);
-          long id=dbHelper.insert(user,context);
+          DBHelper dbHelper1=new DBHelper(context);
+          long id=dbHelper1.insert(user,context);
           Log.d("userId",id+"");
           return id;
 
       }
+      public void  dbSelectAll(Context context){
+          DBHelper dbHelper2=new DBHelper(context);
+          ArrayList arr =dbHelper2.selectAll();
+         D1.setValue(arr);
+    }
     }
