@@ -40,8 +40,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         private ImageView ivFruitImg;
         public MyViewHolder(View itemView){
             super(itemView);
-            tvFruitName=itemView.findViewById(R.id.tvFruitName);
-            ivFruitImg = itemView.findViewById(R.id. ivFruitImg);
+            //tvFruitName=itemView.findViewById(R.id.tvFruitName);
+            //livFruitImg = itemView.findViewById(R.id. ivFruitImg);
         }
         public void bind(final Fruit item,final  OnItemClickListener listener){
             tvFruitName.setText(item.getName());
