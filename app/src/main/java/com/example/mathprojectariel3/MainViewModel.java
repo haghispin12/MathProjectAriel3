@@ -1,27 +1,26 @@
 package com.example.mathprojectariel3;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
-public class mainViewModel extends ViewModel {
+public class MainViewModel extends ViewModel {
     MutableLiveData<Integer> Vnum1;
     MutableLiveData<Integer> Vnum2;
-    MutableLiveData<ArrayList<User>> D1;
     int point;
     Exercise exercise;
     User user;
-    public mainViewModel(){
+    MutableLiveData<ArrayList<User>> users;
+    public MainViewModel(){
         Vnum1=new MutableLiveData<>();
         Vnum2=new MutableLiveData<>();
         exercise=new Exercise();
         user=new User();
+       users = new MutableLiveData<ArrayList<User>>();
     }
     public void VupdateName( String un){
         user.setName(un);
@@ -101,6 +100,6 @@ public class mainViewModel extends ViewModel {
       public void  dbSelectAll(Context context){
           DBHelper dbHelper2=new DBHelper(context);
           ArrayList arr =dbHelper2.selectAll();
-         D1.setValue(arr);
+         users.setValue(arr);
     }
     }

@@ -187,14 +187,14 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    // convert from bitmap to byte array
-//    private  byte[] getBytes(Bitmap bitmap) {
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-//        return stream.toByteArray();
-//    }
-//
-//    // convert from byte array to bitmap
+
+    private  byte[] getBytes(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
+    }
+
+    // convert from byte array to bitmap
     private  Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }}

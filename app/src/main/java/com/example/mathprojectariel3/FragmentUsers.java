@@ -14,6 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -29,13 +31,14 @@ import java.util.ArrayList;
 
 
 public class FragmentUsers extends Fragment {
-        mainViewModel mainViewModel;
+        MainViewModel mainViewModel;
         private EditText user;
         private Button addpic;
         private Button adduser;
         private TextView rate23;
         private TextView score;
         private EditText etUsrename;
+        private RecyclerView rcShowUsers;
         Uri uri;
         ImageView pic1;
 
@@ -66,17 +69,38 @@ public class FragmentUsers extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View view=inflater.inflate(R.layout.fragment_showusers, container, false);
-        mainViewModel=new ViewModelProvider(requireActivity()).get(mainViewModel.class);
-//        viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
-        mainViewModel.D1.observe(getActivity(), new Observer<ArrayList<User>>() {
+        mainViewModel=new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+        mainViewModel.users.observe(getActivity(), new Observer<ArrayList<User>>() {
             @Override
-            public void onChanged(ArrayList<User> users) {
+            public void onChanged(ArrayList<User> Users) {
+
+                if (Users.size()>0){
+
+
+                UserAdapter fa= new UserAdapter(Users,
+                        new UserAdapter.OnItemClickListener() {
+
+                            @Override
+                            public void onItemClick(User item) {
+                                int n = 10;
+
+                            }
+
+                        });
+                    rcShowUsers.setLayoutManager(new LinearLayoutManager(requireActivity()));
+                    rcShowUsers.setAdapter(fa);
+                    rcShowUsers.setHasFixedSize(true);
 
             }
+            }
         });
-        initview(view);
-       return view;
 
+        initview(view);
+
+
+        mainViewModel.dbSelectAll(requireActivity());
+
+        return view;
     }
 
 
@@ -89,6 +113,7 @@ public class FragmentUsers extends Fragment {
         pic1=view.findViewById(R.id.ivProfileImage);
         score.setText("score"+mainViewModel.vgetscore()+"");
         rate23.setText("rate"+mainViewModel.vgetrate()+"");
+        rcShowUsers=view.findViewById(R.id.rcShowUsers);
 
        adduser.setOnClickListener(new View.OnClickListener() {
             @Override

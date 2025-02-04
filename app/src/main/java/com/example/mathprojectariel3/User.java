@@ -82,4 +82,12 @@ public class User {
     public void setRate(int rate) {
         this.rate = rate;
     }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
 }

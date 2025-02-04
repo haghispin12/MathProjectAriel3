@@ -5,23 +5,20 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ShowUsersActivity extends AppCompatActivity {
+public class ShowFruitsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.show_users_users);
+        setContentView(R.layout.show_fruits);
        RecyclerView rcShowFruits;
-       rcShowFruits=findViewById(R.id.rcShowUsers);
+       rcShowFruits=findViewById(R.id.rcShowfruits);
         ArrayList<Fruit>fruits=new ArrayList<>();
         fruits.add(new Fruit ("banana",R.drawable.banana));
         fruits.add(new Fruit("apple",R.drawable.apple));
@@ -35,7 +32,7 @@ public class ShowUsersActivity extends AppCompatActivity {
                 new FruitAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Fruit item) {
-                        Toast.makeText(ShowUsersActivity.this,item.getName(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShowFruitsActivity.this,item.getName(),Toast.LENGTH_SHORT).show();
                     }
 
 

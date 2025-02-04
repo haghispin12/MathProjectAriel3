@@ -26,7 +26,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/user1"
+            android:id="@+id/etUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -53,11 +53,12 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <Button
+        <ImageView
             android:id="@+id/picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Picture" />
+
 
         <Button
             android:id="@+id/adduser"
@@ -65,13 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Add user" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcitemview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/show_users_users"
 
-            />
     </LinearLayout>
 
 

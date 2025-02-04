@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowUsersActivity">
+    tools:context=".ShowFruitsActivity">
 <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rcShowUsers"
+    android:id="@+id/rcShowfruits"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:listitem="@layout/show_users_users"/>
+    tools:listitem="@layout/show_fruits"/>
 </LinearLayout>

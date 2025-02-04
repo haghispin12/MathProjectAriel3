@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Button check;
     private Button save;
     private Button allpar;
-    private mainViewModel viewModelMain;
+    private MainViewModel viewModelMain;
     private Button Grate;
 
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String username=intent.getStringExtra("UserName");
         Toast.makeText(MainActivity.this,username,Toast.LENGTH_LONG).show();
-        viewModelMain=new ViewModelProvider(this).get(mainViewModel.class);
+        viewModelMain=new ViewModelProvider(this).get(MainViewModel.class);
         viewModelMain.VupdateName(username);
         viewModelMain.Vnum1.observe(this, new Observer<Integer>() {
             @Override
