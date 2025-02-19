@@ -58,7 +58,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUserName = itemView.findViewById(R.id.etUserName);
-            tvUserRate = itemView.findViewById(R.id.rate23);
+            tvUserRate = itemView.findViewById(R.id.score);
             ivUserPic = itemView.findViewById(R.id.picture);
         }
 
